@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share link to note</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Share link to note</h2>
+  <label for="textInput">Enter note ID</label>
+  <input type="text" id="textInput" placeholder="Enter node ID">
+  <button onclick="addNote()">Create link</button>
+  <br>
+  <label for="output">Link</label>
+  <input type="text" id="output" readonly>
+  <button onclick="copyToClipboard()">Copy to Clipboard</button>
+  
+  <script>
+    function addNote() {
+
+      var inputValue = document.getElementById('textInput').value;
+
+      var resultValue = 'https://primal.net/e/' + inputValue;
+
+      document.getElementById('output').value = resultValue;
+    }
+
+    function copyToClipboard() {
+
+      var outputField = document.getElementById('output');
+
+      outputField.select();
+      outputField.setSelectionRange(0, 99999); // For mobile devices
+
+      document.execCommand('copy');
+
+      window.getSelection().removeAllRanges();
+
+      alert('Copied to clipboard: ' + outputField.value);
+    }
+  </script>
+</body>
+</html>
+
